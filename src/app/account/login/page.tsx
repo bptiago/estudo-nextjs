@@ -24,12 +24,14 @@ export default function Login() {
     const email = formData.get("email")!.toString();
     const password = formData.get("password")!.toString();
 
+    console.log(email, password);
+
     return;
   }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <MyForm fields={fields} onSubmit={onSubmit} />
+      <MyForm fields={fields} onSubmit={onSubmit} action="youtube.com" />
     </main>
   );
 }

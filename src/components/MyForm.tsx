@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FormEvent } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 export type field = {
   name: string;
@@ -12,16 +12,16 @@ export type field = {
 
 type formProps = {
   fields: field[];
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-};
+} & ComponentPropsWithoutRef<"form">;
 
-export default function MyForm({ fields, onSubmit }: formProps) {
+export default function MyForm({ fields, onSubmit, ...props }: formProps) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 w-full">
       <form
         action=""
         className="w-1/4 min-w-96 text-center space-y-6 rounded-lg border p-8"
         onSubmit={onSubmit}
+        {...props}
       >
         <h1 className="text-2xl font-semibold tracking-wide">Login</h1>
         {fields.map(({ name, type, pattern }, index) => {
