@@ -21,8 +21,9 @@ export default function Login() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const values = formData.getAll("input");
-    console.log(values);
+    const email = formData.get("email")!.toString();
+    const password = formData.get("password")!.toString();
+
     return;
   }
 

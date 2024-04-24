@@ -29,7 +29,7 @@ export default function MyForm({ fields, onSubmit }: formProps) {
             <Input
               key={index}
               type={type}
-              name="input"
+              name={name}
               placeholder={name[0].toUpperCase() + name.slice(1)}
               pattern={pattern}
               required
