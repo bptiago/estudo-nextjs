@@ -31,7 +31,12 @@ export default function Login() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <MyForm fields={fields} onSubmit={onSubmit} action="youtube.com" />
+      <MyForm
+        title="Login"
+        submitButtonText="Log in"
+        fields={fields}
+        onSubmit={onSubmit}
+      />
     </main>
   );
 }

@@ -11,35 +11,41 @@ export type field = {
 };
 
 type formProps = {
+  title: string;
   fields: field[];
+  submitButtonText: string;
 } & ComponentPropsWithoutRef<"form">;
 
-export default function MyForm({ fields, onSubmit, ...props }: formProps) {
+export default function MyForm({
+  title,
+  fields,
+  onSubmit,
+  submitButtonText,
+  ...props
+}: formProps) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 w-full">
-      <form
-        action=""
-        className="w-1/4 min-w-96 text-center space-y-6 rounded-lg border p-8"
-        onSubmit={onSubmit}
-        {...props}
-      >
-        <h1 className="text-2xl font-semibold tracking-wide">Login</h1>
-        {fields.map(({ name, type, pattern }, index) => {
-          return (
-            <Input
-              key={index}
-              type={type}
-              name={name}
-              placeholder={name[0].toUpperCase() + name.slice(1)}
-              pattern={pattern}
-              required
-            />
-          );
-        })}
-        <Button className="w-full" type="submit">
-          Log In
-        </Button>
-      </form>
-    </main>
+    <form
+      action=""
+      className="w-1/4 min-w-96 text-center space-y-6 rounded-lg border p-8"
+      onSubmit={onSubmit}
+      {...props}
+    >
+      <h1 className="text-2xl font-semibold tracking-wide">{title}</h1>
+      {fields.map(({ name, type, pattern }, index) => {
+        return (
+          <Input
+            key={index}
+            type={type}
+            name={name}
+            placeholder={name[0].toUpperCase() + name.slice(1)}
+            pattern={pattern}
+            required
+          />
+        );
+      })}
+      <Button className="w-full" type="submit">
+        {submitButtonText}
+      </Button>
+    </form>
   );
 }
